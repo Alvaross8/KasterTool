@@ -1,0 +1,90 @@
+body {
+    background-color: rgb(187, 211, 255);
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+#menuCabecera ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width:50%;
+}
+
+#menuCabecera ul li{
+  
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    text-decoration: none;
+    float: left;
+    font-family: 'Charm', cursive;
+}
+
+
+#menu li:hover {
+    background-color: #581845;
+  }
+
+#divForm {
+   
+    padding: 16px 
+}
+
+#menuCabecera {
+    background-color: #333332;
+    border: 1px solid #333332;
+    border-radius: 10px;
+}
+
+#menuCabecera div {
+   display:flex;
+   flex-direction: row;
+}
+
+#logo {
+    margin:20px 0px 20px 80px;
+    max-height: 40px;
+
+}
+
+#medioFondo img{
+    width: 100%;
+    height: 30%;
+    border-radius: 10px;
+}
+
+#busqueda {
+    background-color: #333332;
+    border: 1px solid #333332;
+}
+
+/*HASTA AQUI ES EL CSS DEL HEADER*/
+
+#divPadreArticle {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:5px;
+}
+
+.divsArticulos {
+    border: 2px solid black;
+    border-radius: 30px;
+    margin: 5px;
+    background-color: white;
+    color: black;
+    
+}
+
+.divsArticulos p img {
+    width: 80px;
+    height: 125px;
+}
+
+footer {
+    background-color: #333332;
+}
