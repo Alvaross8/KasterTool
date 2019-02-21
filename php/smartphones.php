@@ -1,5 +1,5 @@
 <?php
-    include('../inc/headerNav.inc');
+    include('../inc/navBar.inc');
 ?>
         <article>
             <div id="divPadreArticle">

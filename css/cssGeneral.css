@@ -5,51 +5,6 @@ body {
     padding: 5px;
 }
 
-#menuCabecera ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    width:50%;
-}
-
-#menuCabecera ul li{
-  
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 18px;
-    text-decoration: none;
-    float: left;
-    font-family: 'Charm', cursive;
-}
-
-
-#menu li:hover {
-    color: rgb(139, 169, 226);
-  }
-
-#divForm {
-   
-    padding: 16px 
-}
-
-#menuCabecera {
-    background-color: #333332;
-    border: 1px solid #333332;
-    border-radius: 10px;
-}
-
-#menuCabecera div {
-   display:flex;
-   flex-direction: row;
-}
-
-#logo {
-    margin:20px 0px 20px 80px;
-    max-height: 40px;
-
-}
 
 #medioFondo img{
     width: 100%;

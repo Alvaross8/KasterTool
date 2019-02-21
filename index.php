@@ -25,7 +25,7 @@
             }      
         }
         $conection = null;
-      header('Location: portada.php');
+      header('Location: php/portada.php');
       die();
     }
 
