@@ -2,21 +2,20 @@
     <head>
         <meta charset="utf-8">
         <title>KasterTool</title>
-        <link rel="stylesheet" type="text/css" href="../css/cssPortada.css">
+        <link rel="stylesheet" type="text/css" href="../css/cssGeneral.css">
     </head>
     <body>
         <header id="cabeceraGeneral">
             <nav id="MenuCabecera">
                 <div>
                     <ul id="menu">
-                        <li>Home</li>
-                        <li>Registro</li>
-                        <li>PCs</li>
-                        <li>Periféricos</li>
-                        <li>SmartPhones</li>
-                        <li>Televisores</li>
-                        <li>Pedido</li>
-                        <li>Contacto</li>
+                        <a href="../arranque/portada.php"><li>Home</li></a>
+                        <a href="../php/pcs.php"><li>PCs</li></a>
+                        <a href="../php/perifericos.php"><li>Periféricos</li></a>
+                        <a href="../php/smartphones.php"><li>SmartPhones</li></a>
+                        <a href="../php/registros.php"><li>Registro</li></a>
+                        <a href="../php/pedidos.php"><li>Pedidos</li></a>
+                        
                     </ul>
                     <div id="divForm">
                         <form action="#" method="GET">
