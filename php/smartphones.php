@@ -1,10 +1,11 @@
 <?php
+    require_once 'conexion.php';
+    require_once 'cesta.php';
     include('../inc/navBar.inc');
 ?>
         <article>
             <div id="divPadreArticle">
             <?php
-                require_once '../php/conexion.php';
                 $conexion = new Conexion();
 
                 if(isset($_REQUEST['botonBuscar'])){
@@ -18,7 +19,10 @@
                             <p>' . $fila['Tipo'] . '</p>
                             <p>' . $fila['Marca'] . '</p>
                             <p>' . $fila['Existencias'] . '</p>
-                            <p><a href="logica.php"><button>Añadir</button></a></p>
+                            <p><a href="logica.php?accion=annadir&nombre=' . $fila['Nombre'] . '&descripcion=' . 
+                            $fila['Descripcion'] . '&precioProducto=' . $fila['Precio_Producto'] . 
+                            '&tipo=' . $fila['Tipo'] . '&marca=' . $fila['Marca'] . '&existencias=' . 
+                            $fila['Existencias'] . '&imagen=' . $fila['Imagen'] . '"><button>Añadir</button></a></p>
                         </div>';
                     }
                 }else {
@@ -33,7 +37,10 @@
                             <p>' . $fila['Tipo'] . '</p>
                             <p>' . $fila['Marca'] . '</p>
                             <p>' . $fila['Existencias'] . '</p>
-                            <p><a href="logica.php"><button>Añadir</button></a></p>
+                            <p><a href="logica.php?accion=annadir&nombre=' . $fila['Nombre'] . '&descripcion=' . 
+                            $fila['Descripcion'] . '&precioProducto=' . $fila['Precio_Producto'] . 
+                            '&tipo=' . $fila['Tipo'] . '&marca=' . $fila['Marca'] . '&existencias=' . 
+                            $fila['Existencias'] . '&imagen=' . $fila['Imagen'] . '"><button>Añadir</button></a></p>
                         </div>';
                     }
                 }
