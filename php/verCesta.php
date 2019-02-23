@@ -15,6 +15,7 @@
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Tipo</th>
+                            <th>Cantidad</th>
                         </tr>
                     <?php
                         $conexion = new Conexion();
@@ -29,7 +30,8 @@
                                     <td>' . $fila['precioProducto'] . '</td>
                                     <td>' . $fila['tipo'] . '</td>
                                     <td><a href="logica.php?accion=eliminar&cod=' . $indice . '&nombre=' . $fila['nombre'] . '"><button>-</button></a><td>
-                                    <td><a href="logica.php?accion=sumar&cod=' . $indice . '&nombre=' . $fila['nombre'] . '"><button>+</button></a><td>
+                                    <td><a href="logica.php?accion=annadir2&cod=' . $indice . '&nombre=' . $fila['nombre'] . '&precioProducto=' . 
+                                    $fila['precioProducto'] . '&tipo=' . $fila['tipo'] . '"><button>+</button></a><td>
                                 </tr>';
                             }
                             echo '<tr>

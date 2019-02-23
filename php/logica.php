@@ -8,21 +8,14 @@
 
     if($accion == 'annadir') {
         $nombre = $_REQUEST['nombre'];
-        $descripcion = $_REQUEST['descripcion'];
         $precioProducto = $_REQUEST['precioProducto'];
         $tipo = $_REQUEST['tipo'];
-        $marca = $_REQUEST['marca'];
-        $existencias = $_REQUEST['existencias'];
-        $imagen = $_REQUEST['imagen'];
+
 
         $arrayArticulo = [
             'nombre' => $nombre,
-            'descripcion' => $descripcion,
             'precioProducto' => $precioProducto,
             'tipo' => $tipo,
-            'marca' => $marca,
-            'existencias' => $existencias,
-            'imagen' => $imagen
         ];
 
         $_SESSION['cesta']->annadirArticulo($arrayArticulo);
@@ -36,6 +29,22 @@
         $conexion->sumarExistencias($nombre);
         $_SESSION['cesta']->eliminarArticulo($cod);
         header('Location:verCesta.php');
+
+    }else if($accion == 'annadir2') {
+        $nombre = $_REQUEST['nombre'];
+        $precioProducto = $_REQUEST['precioProducto'];
+        $tipo = $_REQUEST['tipo'];
+
+        $arrayArticulo = [
+            'nombre' => $nombre,
+            'precioProducto' => $precioProducto,
+            'tipo' => $tipo,
+        ];
+
+        $_SESSION['cesta']->annadirArticulo($arrayArticulo);
+        $conexion->restarExistencias($nombre);
+        header('Location: verCesta.php');
+
 
     }else if($accion == 'comprar') {
         unset($_SESSION['cesta']);
