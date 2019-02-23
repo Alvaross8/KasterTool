@@ -14,9 +14,32 @@
         $marca = $_REQUEST['marca'];
         $existencias = $_REQUEST['existencias'];
         $imagen = $_REQUEST['imagen'];
-        $arrayArticulo = [$nombre, $descripcion, $precioProducto, $tipo, $marca, $existencias, $imagen];
+
+        $arrayArticulo = [
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'precioProducto' => $precioProducto,
+            'tipo' => $tipo,
+            'marca' => $marca,
+            'existencias' => $existencias,
+            'imagen' => $imagen
+        ];
+
         $_SESSION['cesta']->annadirArticulo($arrayArticulo);
+        $conexion->restarExistencias($nombre);
+        header('Location:portada.php');
+
+    }else if($accion == 'eliminar') {
+        $cod = $_REQUEST['cod'];
+        $nombre = $_REQUEST['nombre'];
+
+        $conexion->sumarExistencias($nombre);
+        $_SESSION['cesta']->eliminarArticulo($cod);
         header('Location:verCesta.php');
+
+    }else if($accion == 'comprar') {
+        unset($_SESSION['cesta']);
+        header('Location: portada.php');
     }
 
 ?>

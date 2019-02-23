@@ -28,9 +28,9 @@
             $listaArticulos = $this->getListaArticulos();
 
             foreach($listaArticulos as $fila) {
-                $precioTotal += $fila['Precio_Producto'];
+                $precioTotal += $fila['precioProducto'];
             }
-            return precioTotal;
+            return $precioTotal;
         }
     }
 

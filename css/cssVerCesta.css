@@ -1,0 +1,75 @@
+body {
+    background-color: rgb(187, 211, 255);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    position:relative;
+}
+
+#medioFondo img{
+    width: 100%;
+    height: 30%;
+    border-radius: 10px;
+}
+
+#busqueda {
+    background-color: #333332;
+    border: 1px solid #333332;
+}
+
+
+table {
+    margin-top:5%;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    text-align: left;
+    padding: 8px;
+    color: #b32989;
+  }
+  
+  th{
+    background-color: #5b85df;
+  }
+
+#precio {
+    text-align: right;
+}
+
+#divVacioCarro{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
+    position: relative;
+}
+
+#divVacioCarro > h2 {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #333332;
+}
+
+#divVacioCarro > a {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: #333332;
+}
+
+#botonCompra {
+    display:flex;
+}
+
+footer {
+    clear:both;
+    background-color: #333332;
+    position:absolute;
+    bottom:0px;
+    width: 100%;
+}

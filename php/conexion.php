@@ -14,6 +14,7 @@
             }
         }
 
+        ////////////////////////////////////////////// PARTE DE INSERTAR ///////////////////////////////////////////////////////////////////////////
         function insertarUsuario($nombre, $apellidos, $email, $contrasenna, $dni, $direccion, $codigo) {
             $consulta = "INSERT INTO USUARIOS (Nombre, Apellidos, Email, Contrsenna, Dni, Direccion, Codigo_postal) VALUES (?, ?, ?, ?, ?, ?, ?)";
             if($resultado = $this->conexion->prepare($consulta)) {
@@ -52,10 +53,58 @@
             $resultado->close();
         }
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+        ////////////////////////////////////////// UPDATES ////////////////////////////////////////////////////
+
+        function restarExistencias($nombre){
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("UPDATE PRODUCTOS SET existencias = existencias - 1 where nombre = ?");
+            $stmt->bind_param('s', $nombre);
+            $stmt->execute();
+        }
+
+        function sumarExistencias($nombre){
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("UPDATE PRODUCTOS SET existencias = existencias + 1 where nombre = ?");
+            $stmt->bind_param('s', $nombre);
+            $stmt->execute();
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////// PARTE DE LOS SELECT ////////////////////////////////////////////
+        
         function selectArticulo() { // esta select solo es para mostrar todos los productos
             $consulta = $this->conexion->stmt_init();
-            $consulta->prepare("SELECT * FROM PRODUCTOS");
+            $consulta->prepare("SELECT * FROM PRODUCTOS where existencias > 0");
+            $consulta->execute();
+
+            $resultado = $consulta->get_result();
+            $arrayFin = array();
+
+            while($fila = $resultado->fetch_assoc()) {
+                $temp = [
+                    'Nombre' => $fila['Nombre'],
+                    'Descripcion' => $fila['Descripcion'],
+                    'Precio_Producto' => $fila['Precio_Producto'],
+                    'Tipo' => $fila['Tipo'],
+                    'Marca' => $fila['Marca'],
+                    'Imagen' => $fila['Imagen'],
+                    'Existencias' => $fila['Existencias']
+                ];
+
+                array_push($arrayFin, $temp);
+            }
+            return $arrayFin;
+        }
+
+        function selectPagina($pagina) { // esta select solo es para mostrar cada pagina en su correspondiente
+            $consulta = $this->conexion->stmt_init();
+            $consulta->prepare("SELECT * FROM PRODUCTOS WHERE Tipo like ? and existencias > 0");
+            $consulta->bind_param('s', $pagina);
             $consulta->execute();
 
             $resultado = $consulta->get_result();
@@ -77,11 +126,14 @@
             return $arrayFin;
         }
         
-        function selectBuscador(){ // en este select mostramos en base a la busqueda y la pagina donde este el usuario
+        function selectBuscador($busqueda, $busqueda1){ // en este select mostramos en base a la busqueda en el home
+            $buscar = '%' . $busqueda . '%';
+            $buscar1 = '%' . $busqueda1 . '%';
             $stmt = $this->conexion->stmt_init();
-            $stmt->prepare("SELECT * FROM PRODUCTOS");
+            $stmt->prepare("SELECT * FROM PRODUCTOS where existencias > 0 and nombre like ? or tipo like ?");
+            $stmt->bind_param('ss', $buscar, $buscar1);
             $stmt->execute();
-
+            
             $resultado = $stmt->get_result();
             $arrayFin = array();
 
@@ -99,7 +151,34 @@
             }
             return $arrayFin;
         }
-        
+
+
+        function selectBuscadorPagina($busqueda, $busqueda1){ // en este select mostramos en base a la busqueda y la pagina donde este el usuario
+            $buscar = '%' . $busqueda . '%';
+            $buscar1 = '%' . $busqueda1 . '%';
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("SELECT * FROM PRODUCTOS where existencias > 0 and nombre like ? and tipo like ?");
+            $stmt->bind_param('ss', $buscar, $buscar1);
+            $stmt->execute();
+            
+            $resultado = $stmt->get_result();
+            $arrayFin = array();
+
+            while($fila = $resultado->fetch_assoc()) {
+                $temp = [
+                    'Nombre' => $fila['Nombre'],
+                    'Descripcion' => $fila['Descripcion'],
+                    'Precio_Producto' => $fila['Precio_Producto'],
+                    'Tipo' => $fila['Tipo'],
+                    'Marca' => $fila['Marca'],
+                    'Imagen' => $fila['Imagen'],
+                    'Existencias' => $fila['Existencias']
+                ];
+                array_push($arrayFin, $temp);
+            }
+            return $arrayFin;
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
     
         function cierreConexion() {
             $this->conexion->close(); 
