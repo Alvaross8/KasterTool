@@ -39,7 +39,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="../php/registros.php">Registro</a>
+          <a class="nav-link" href="../php/login.php">Login</a>
         </li>
 
       </ul>

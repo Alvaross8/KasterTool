@@ -11,16 +11,17 @@
         $precioProducto = $_REQUEST['precioProducto'];
         $tipo = $_REQUEST['tipo'];
 
-
         $arrayArticulo = [
             'nombre' => $nombre,
             'precioProducto' => $precioProducto,
             'tipo' => $tipo,
+            'cantidad' => 1
         ];
 
         $_SESSION['cesta']->annadirArticulo($arrayArticulo);
         $conexion->restarExistencias($nombre);
         header('Location:portada.php');
+
 
     }else if($accion == 'eliminar') {
         $cod = $_REQUEST['cod'];
@@ -29,6 +30,7 @@
         $conexion->sumarExistencias($nombre);
         $_SESSION['cesta']->eliminarArticulo($cod);
         header('Location:verCesta.php');
+
 
     }else if($accion == 'annadir2') {
         $nombre = $_REQUEST['nombre'];
@@ -39,6 +41,7 @@
             'nombre' => $nombre,
             'precioProducto' => $precioProducto,
             'tipo' => $tipo,
+            'cantidad' => 1
         ];
 
         $_SESSION['cesta']->annadirArticulo($arrayArticulo);
@@ -48,7 +51,7 @@
 
     }else if($accion == 'comprar') {
         unset($_SESSION['cesta']);
-        header('Location: portada.php');
+        header('Location: archivoPdf.php');
     }
 
 ?>

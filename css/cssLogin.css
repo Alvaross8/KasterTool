@@ -4,12 +4,32 @@ body {
     padding: 5px;
 }
 
+body {
+    background-color: rgb(187, 211, 255);
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+
+#medioFondo img{
+    width: 100%;
+    height: 30%;
+    border-radius: 10px;
+}
+
+#busqueda {
+    background-color: #333332;
+    border: 1px solid #333332;
+}
+
 #general {
     width: 80%;
     height: 700px;
-    margin: 10%;
+    margin: 3%;
     background-color: white;
     border-radius:30px;
+    color: black;
 
 }
 
@@ -26,12 +46,6 @@ body {
     width: 40%;
     margin-top: 5%;
 }
-
-#registro {
-    height: 350px;
-    margin-bottom: 5%;
-}
-
 #login {
     height: 200px;
 }

@@ -29,6 +29,7 @@
                                     <td>' . $fila['nombre'] . '</td>
                                     <td>' . $fila['precioProducto'] . '</td>
                                     <td>' . $fila['tipo'] . '</td>
+                                    <td>' . $fila['cantidad'] . '</td>
                                     <td><a href="logica.php?accion=eliminar&cod=' . $indice . '&nombre=' . $fila['nombre'] . '"><button>-</button></a><td>
                                     <td><a href="logica.php?accion=annadir2&cod=' . $indice . '&nombre=' . $fila['nombre'] . '&precioProducto=' . 
                                     $fila['precioProducto'] . '&tipo=' . $fila['tipo'] . '"><button>+</button></a><td>
@@ -39,7 +40,10 @@
                                 <td>' . $precio . '</td>
                                 </tr></table>';
                             echo '</div>';
-                            echo '<a href="logica.php?accion=comprar" id="botonCompra"><button>Comprar</button></a>';
+
+                                echo '<a href="logica.php?accion=comprar" id="botonCompra"><button>Comprar</button></a>';
+
+                            
             }else {
         
                 echo '<div id="divVacioCarro">';

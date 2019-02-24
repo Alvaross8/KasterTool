@@ -1,6 +1,7 @@
 <?php
     require_once 'cesta.php';
     require_once 'conexion.php';
+    
     include('../inc/navBar.inc');
 
     session_start();

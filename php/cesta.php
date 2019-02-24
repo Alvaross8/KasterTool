@@ -16,9 +16,10 @@
 
 
         function annadirArticulo($articulo){
-                $this->articulos[$this->codArticulo] = $articulo;
-                $this->codArticulo++;
+            $this->articulos[$this->codArticulo] = $articulo;
+            $this->codArticulo++;
         }
+
 
         function sumarCantidad($articulo, $contador) {
             $articulo['cantidad'] = $articulo['cantidad'] + $contador;

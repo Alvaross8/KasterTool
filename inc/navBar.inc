@@ -38,9 +38,9 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="../php/registros.php">Registro</a>
+          <a class="nav-link" href="../php/login.php">Login</a>
         </li>
-
+        
       </ul>
       <form action = "#"class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="buscar">

@@ -16,41 +16,26 @@
 
         ////////////////////////////////////////////// PARTE DE INSERTAR ///////////////////////////////////////////////////////////////////////////
         function insertarUsuario($nombre, $apellidos, $email, $contrasenna, $dni, $direccion, $codigo) {
-            $consulta = "INSERT INTO USUARIOS (Nombre, Apellidos, Email, Contrsenna, Dni, Direccion, Codigo_postal) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            if($resultado = $this->conexion->prepare($consulta)) {
-                $resultado->bind_param('ssssssi', $nombre, $apellido, $email, $contrasenna, $dni, $direccion, $codigo);
-                $resultado->execute();
-
-            }else {
-                echo "mal";
-            }
-            $resultado->close();
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("INSERT INTO USUARIOS (Nombre, Apellidos, Email, Contrasenna, Dni, Direccion, Codigo_Postal) VALUES(?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param('ssssssi', $nombre, $apellidos, $email, $contrasenna, $dni, $direccion, $codigo);
+            $stmt->execute();
         }
 
 
         function insertarProducto($nombre, $descripcion, $precio_producto, $imagen, $marca, $existencias, $tipo) {
-            $consulta = "INSERT INTO PRODUCTOS (Nombre, Descripcion, Precio_producto, Imagen, Marca, Existencias, Tipo) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            if($resultado = $this->conexion->prepare($consulta)) {
-                $resultado->bind_param('ssdssis', $nombre, $descripcion, $precio_producto, $imagen, $marca, $existencias, $tipo);
-                $resultado->execute();
-
-            }else {
-                echo "mal";
-            }
-            $resultado->close();
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("INSERT INTO PRODUCTOS (Nombre, Descripcion, Preio_Producto, Tipo, Marca, Imagen, Existencias) VALUES(?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param('ssdsssi', $nombre, $descripcion, $precio_producto, $imagen, $marca, $existencias, $tipo);
+            $stmt->execute();
         }
 
 
-        function insertarPedido($email, $cantidad, $precio_producto, $precio_total, $fecha) {
-            $consulta = "INSERT INTO PEDIDOS (Email, Cantidad, Precio_producto, Precio_total, Fecha) VALUES (?, ?, ?, ?, ?)";
-            if($resultado = $this->conexion->prepare($consulta)) {
-                $resultado->bind_param('sidds', $email, $cantidad, $precio_producto, $precio_total, $fecha);
-                $resultado->execute();
-
-            }else {
-                echo "mal"; 
-            }
-            $resultado->close();
+        function insertarPedido($email, $cantidad, $precio_total, $fecha) {
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("INSERT INTO PEDIDOS (Email, Cantidad, PrecioTotal, Fecha) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param('siis', $email, $cantidad, $precio_total, $fecha);
+            $stmt->execute();
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +60,8 @@
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        //////////////////////////////////// PARTE DE LOS SELECT ////////////////////////////////////////////
+
+        //////////////////////////////////// LOS SELECT ////////////////////////////////////////////
         
         function selectArticulo() { // esta select solo es para mostrar todos los productos
             $consulta = $this->conexion->stmt_init();
@@ -178,8 +164,51 @@
             }
             return $arrayFin;
         }
+
+        function selectUsuarios(){ // en este select mostramos los usuarios
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("SELECT * FROM USUARIOS");
+            $stmt->execute();
+            
+            $resultado = $stmt->get_result();
+            $arrayFin = array();
+    
+            while($fila = $resultado->fetch_assoc()) {
+                $temp = [
+                    'nombre' => $fila['Nombre'],
+                    'apellidos' => $fila['Apellidos'],
+                    'email' => $fila['Email'],
+                    'contrasenna' => $fila['Contrasenna'],
+                    'dni' => $fila['Dni'],
+                    'direccion' => $fila['Direccion'],
+                    'codigo' => $fila['Codigo_Postal']
+                ];
+                array_push($arrayFin, $temp);
+            }
+            return $arrayFin;
+        }
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+
+        ///////////////////////////////////////////// DELETES //////////////////////////////////////////////////
+
+        function eliminarProducto($nombre) {
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("DELETE FROM  PRODUCTOS WHERE nombre = ?");
+            $stmt->bind_param('s', $nombre);
+            $stmt->execute();
+        }
+
+
+        function eliminarUsuario($nombre) {
+            $stmt = $this->conexion->stmt_init();
+            $stmt->prepare("DELETE FROM  USUARIOS WHERE nombre = ?");
+            $stmt->bind_param('s', $nombre);
+            $stmt->execute();
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
         function cierreConexion() {
             $this->conexion->close(); 
         }

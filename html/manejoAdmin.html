@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="../css/cssAdmin.css">
     </head>
     <body>
-        <form action="/action_page.php">
+        <form action="../php/logicaAdmin.php">
             <fieldset>
                 <legend>Añadir Productos</legend>
                 Nombre
@@ -36,29 +36,32 @@
                 <input type="text" name="existencias">
                 <br><br>
 
-                <input type="submit" value="Añadir">
+                <input type="submit" value="Añadir" name="annadir">
             </fieldset>
+        </form>
 
-
+        <form action="../php/logicaAdmin.php">
             <fieldset>
                 <legend>Eliminar Productos</legend>
                 Nombre
                 <input type="text" name="nombre">
                 <br><br>
 
-                <input type="submit" value="Eliminar" >
+                <input type="submit" value="Eliminar" name="eliminarProducto">
             </fieldset>
+        </form>
 
-
+        <form action="../php/logicaAdmin.php">
             <fieldset>
                 <legend>Eliminar Usuario</legend>
                 Nombre
                 <input type="text" name="nombre" >
                 <br><br>
 
-                <input type="submit" value="Eliminar">
+                <input type="submit" value="Eliminar" name ="eliminarUsuario">
             </fieldset>
         </form>
-        <a href="portada.php"><button>Volver</button></a>
+
+        <a href="../php/login.php"><button>Salir del Administrador</button></a>
     </body>
 </html>
