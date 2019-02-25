@@ -14,12 +14,15 @@
             return $this->articulos;
         }
 
-
         function annadirArticulo($articulo){
             $this->articulos[$this->codArticulo] = $articulo;
             $this->codArticulo++;
         }
 
+        function sumarArticulos($cod, $articulo) {
+            unset($this->listaArticulos[$cod]);
+            $this->listaArticulos[$cod] = $articulo;
+        }
 
         function sumarCantidad($articulo, $contador) {
             $articulo['cantidad'] = $articulo['cantidad'] + $contador;

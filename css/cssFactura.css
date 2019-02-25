@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(187, 211, 255);
+    color: black;
+    text-align: center;
+    padding: 5px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    border-radius: 15px;
+    margin:auto;
+  }
+  
+  td, th {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #dddddd;
+  }
+  tr:nth-child(even) {
+    background-color: white;
+  }
+
+
+#boton {
+    margin-top: 10%;
+}
+
+#empresa {
+    text-align: center;
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 3%;
+}

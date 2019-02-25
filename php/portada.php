@@ -34,7 +34,6 @@
                                         '&tipo=' . $fila['Tipo'] . '&marca=' . $fila['Marca'] . '&existencias=' . 
                                         $fila['Existencias'] . '&imagen=' . $fila['Imagen'] . '"><button>Añadir</button></a></p>
                                 </div>';
-                        
                         }
                     }else {
                         echo '<h2>No tienes ningún producto con esa busqueda</h2>';
